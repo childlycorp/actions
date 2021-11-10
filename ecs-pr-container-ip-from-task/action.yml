@@ -1,0 +1,17 @@
+name: "Hello World"
+description: "Greet someone and record the time"
+inputs:
+  ecs-task-arn: # task arn
+    description: "Arn of the task"
+    required: true
+  ecs-cluster: # cluster name
+    description: "Name of the cluster"
+    required: true
+outputs:
+  pr-public-ip: # ip of the PR deployment
+    description: "ip of the PR deployment"
+  pr-public-dns-name: # public dns name of the PR deployment
+    description: "public dns name of the PR deployment"
+runs:
+  using: "node12"
+  main: "dist/index.js"
