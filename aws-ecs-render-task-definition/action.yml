@@ -18,6 +18,7 @@ inputs:
     required: false
   pr-number:
     description: 'The pull request number. It will be used to set port'
+    required: true
 outputs:
   task-definition:
     description: 'The path to the rendered task definition file'
