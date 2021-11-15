@@ -23,7 +23,9 @@ outputs:
   task-definition:
     description: 'The path to the rendered task definition file'
   front-port:
+    description: 'The frontend port'
   server-port:
+    description: 'The backend port'
 runs:
   using: 'node12'
   main: 'dist/index.js'
