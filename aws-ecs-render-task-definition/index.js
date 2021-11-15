@@ -82,9 +82,11 @@ async function run() {
     });
 
     // Set frontend and backend ports
-    containerDef.portMappings[0].hostPort = 10000 + Number(prNumber);
-    containerDef.portMappings[1].hostPort = 30000 + Number(prNumber);
-
+    if (prNumber) {
+      containerDef.portMappings[0].hostPort = 10000 + Number(prNumber);
+      containerDef.portMappings[1].hostPort = 30000 + Number(prNumber);
+    }
+    
     const newTaskDefContents = JSON.stringify(taskDefContents, null, 2);
     fs.writeFileSync(updatedTaskDefFile.name, newTaskDefContents);
     core.setOutput('task-definition', updatedTaskDefFile.name);

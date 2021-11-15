@@ -34,6 +34,7 @@ describe('Render task definition', () => {
                 {
                     name: "web",
                     image: "some-other-image",
+
                     environment: [
                         {
                             name: "FOO",
@@ -43,11 +44,35 @@ describe('Render task definition', () => {
                             name: "DONT-TOUCH",
                             value: "me"
                         }
+                    ],
+                    portMappings: [
+                        {
+                          hostPort: 3000,
+                          protocol: "tcp",
+                          containerPort: 3000
+                        },
+                        {
+                          hostPort: 4001,
+                          protocol: "tcp",
+                          containerPort: 4001
+                        }
                     ]
                 },
                 {
                     name: "sidecar",
-                    image: "hello"
+                    image: "hello",
+                    portMappings: [
+                        {
+                          hostPort: 3000,
+                          protocol: "tcp",
+                          containerPort: 3000
+                        },
+                        {
+                          hostPort: 4001,
+                          protocol: "tcp",
+                          containerPort: 4001
+                        }
+                    ]
                 }
             ]
         }), { virtual: true });
@@ -82,11 +107,35 @@ describe('Render task definition', () => {
                                 name: "HELLO",
                                 value: "world"
                             }
+                        ],
+                        portMappings: [
+                            {
+                              hostPort: 3000,
+                              protocol: "tcp",
+                              containerPort: 3000
+                            },
+                            {
+                              hostPort: 4001,
+                              protocol: "tcp",
+                              containerPort: 4001
+                            }
                         ]
                     },
                     {
                         name: "sidecar",
-                        image: "hello"
+                        image: "hello",
+                        portMappings: [
+                            {
+                              hostPort: 3000,
+                              protocol: "tcp",
+                              containerPort: 3000
+                            },
+                            {
+                              hostPort: 4001,
+                              protocol: "tcp",
+                              containerPort: 4001
+                            }
+                        ]
                     }
                 ]
             }, null, 2)
@@ -106,7 +155,25 @@ describe('Render task definition', () => {
             containerDefinitions: [
                 {
                     name: "web",
-                    image: "some-other-image"
+                    image: "some-other-image",
+                    environment: [
+                        {
+                            name: "EXAMPLE",
+                            value: "here"
+                        }
+                    ],
+                    portMappings: [
+                        {
+                          hostPort: 3000,
+                          protocol: "tcp",
+                          containerPort: 3000
+                        },
+                        {
+                          hostPort: 4001,
+                          protocol: "tcp",
+                          containerPort: 4001
+                        }
+                    ]
                 }
             ]
         }), { virtual: true });
@@ -132,7 +199,19 @@ describe('Render task definition', () => {
                                 name: "EXAMPLE",
                                 value: "here"
                             }
-                        ]
+                        ],
+                        portMappings: [
+                            {
+                              hostPort: 3000,
+                              protocol: "tcp",
+                              containerPort: 3000
+                            },
+                            {
+                              hostPort: 4001,
+                              protocol: "tcp",
+                              containerPort: 4001
+                            }
+                        ],
                     }
                 ]
             }, null, 2)
@@ -190,7 +269,19 @@ describe('Render task definition', () => {
             containerDefinitions: [
                 {
                     name: "main",
-                    image: "some-other-image"
+                    image: "some-other-image",
+                    portMappings: [
+                        {
+                          hostPort: 3000,
+                          protocol: "tcp",
+                          containerPort: 3000
+                        },
+                        {
+                          hostPort: 4001,
+                          protocol: "tcp",
+                          containerPort: 4001
+                        }
+                    ]
                 }
             ]
         }), { virtual: true });
