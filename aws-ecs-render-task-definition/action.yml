@@ -22,6 +22,8 @@ inputs:
 outputs:
   task-definition:
     description: 'The path to the rendered task definition file'
+  front-port:
+  server-port:
 runs:
   using: 'node12'
   main: 'dist/index.js'
