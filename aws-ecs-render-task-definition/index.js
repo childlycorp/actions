@@ -90,7 +90,7 @@ async function run() {
     const newTaskDefContents = JSON.stringify(taskDefContents, null, 2);
     fs.writeFileSync(updatedTaskDefFile.name, newTaskDefContents);
     core.setOutput('task-definition', updatedTaskDefFile.name);
-    core.setOutput('front-port',containerDef.portMappings[0].hostPort);
+    core.setOutput('front-port',newTaskDefContents);
     core.setOutput('server-port',containerDef.portMappings[1].hostPort);
   }
   catch (error) {
