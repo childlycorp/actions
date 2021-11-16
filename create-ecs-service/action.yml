@@ -1,0 +1,15 @@
+name: 'Create an AWS service if needed'
+description: 'It creates an AWS service in a cluster if it has not been created'
+inputs:
+  ecs-cluster-name : 
+    description: cluster
+    required: true
+  ecs-service-name : 
+    description: serviceName
+    required: true
+  ecs-task-definition-name : 
+    description: taskDefinition
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

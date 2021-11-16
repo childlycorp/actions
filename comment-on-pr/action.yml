@@ -1,0 +1,23 @@
+name: 'Commit Comment on a PR'
+description: 'Create a comment for a PR on GitHub'
+inputs:
+  token:
+    required: true  
+    description: 'The GitHub authentication token'
+    default: ${{ github.token }}
+  repository:
+    required: true
+    description: 'The full name of the target repository.'
+    default: ${{ github.repository }}
+  pr-number:
+    required: true
+    description: 'The PR number.'
+  body:
+    description: 'The contents of the comment.'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'message-square'  
+  color: 'gray-dark'

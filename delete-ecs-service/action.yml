@@ -1,0 +1,12 @@
+name: 'Deletes an AWS service'
+description: 'It deletes an AWS service in a cluster'
+inputs:
+  ecs-cluster-name : 
+    description: cluster
+    required: true
+  ecs-service-name : 
+    description: serviceName
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
