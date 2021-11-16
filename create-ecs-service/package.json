@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "package": "ncc build index.js -o dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,5 +14,10 @@
     "@actions/core": "^1.2.4",
     "@actions/github": "^4.0.0",
     "aws-sdk": "^2.709.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3",
+    "eslint": "^8.2.0",
+    "jest": "^27.3.1"
   }
 }

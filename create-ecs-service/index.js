@@ -46,7 +46,7 @@ async function run(){
         cluster,
         serviceName,
         taskDefinition,
-        desiredCount: 1,
+        desiredCount: 5,
         "deploymentConfiguration": { 
             "maximumPercent": 200,
             "minimumHealthyPercent": 50
