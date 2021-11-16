@@ -72,7 +72,6 @@ async function run(){
             // delete serviceName
             const response = await ecs.deleteService({service, cluster, force:true}).promise();
             core.info(`Service ${service} is deleted in cluster ${cluster}`);
-            core.info(`Delete service: ${response}`);
             // generate service name
             const arr4 = service.split("-");
             const number = arr4[arr4.length - 1];
