@@ -87,16 +87,17 @@ async function run(){
     core.info(`New service name: ${serviceName}`);
 
     try{
-      await createService(ecs,{
-        cluster,
-        serviceName,
-        taskDefinition,
-        desiredCount: 1,
-        "deploymentConfiguration": { 
-            "maximumPercent": 200,
-            "minimumHealthyPercent": 50
-         },
-    });   
+        await createService(ecs,{
+            cluster,
+            serviceName,
+            taskDefinition,
+            desiredCount: 1,
+            "deploymentConfiguration": { 
+                "maximumPercent": 200,
+                "minimumHealthyPercent": 50
+            },
+        });
+        core.setOutput('ecs-service-name', serviceName || '');
     }catch(error){
       core.setFailed(error)
     }

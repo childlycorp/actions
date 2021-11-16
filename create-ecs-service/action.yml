@@ -10,6 +10,9 @@ inputs:
   ecs-task-definition-name : 
     description: taskDefinition
     required: true
+outputs:
+  ecs-service-name : 
+    description: serviceName
 runs:
   using: 'node12'
   main: 'dist/index.js'
