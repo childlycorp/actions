@@ -51,7 +51,7 @@ async function run(){
     const orgNumber = arr1[arr1.length - 1];
     let serviceNames = [];
 
-    let serviceName;
+    let serviceName = undefined;
 
     if (serviceArns.length) {
         serviceArns.forEach(serviceArn => {
@@ -64,19 +64,23 @@ async function run(){
                 serviceNames.push(serviceName);
             }
         });
-        serviceNames.sort();
-        // get last service
-        const service = serviceNames[serviceNames.length - 1];
-        // delete serviceName
-        const response = await ecs.deleteService({service, cluster, force:true}).promise();
-        core.info(`Service ${service} is deleted in cluster ${cluster}`);
-        core.info(`Delete service: ${response}`);
-        // generate service name
-        const arr4 = service.split("-");
-        const number = arr4[arr4.length - 1];
-        const newNumber = String(Number(number) + 1);
-        serviceName = service.replace(number, newNumber);
-    }else{
+
+        if (serviceNames.length) {
+            serviceNames.sort();
+            // get last service
+            const service = serviceNames[serviceNames.length - 1];
+            // delete serviceName
+            const response = await ecs.deleteService({service, cluster, force:true}).promise();
+            core.info(`Service ${service} is deleted in cluster ${cluster}`);
+            core.info(`Delete service: ${response}`);
+            // generate service name
+            const arr4 = service.split("-");
+            const number = arr4[arr4.length - 1];
+            const newNumber = String(Number(number) + 1);
+            serviceName = service.replace(number, newNumber);
+        }
+    }
+    if (!serviceName) {
         serviceName = inServiceName + "000";
     }
 
