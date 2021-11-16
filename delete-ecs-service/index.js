@@ -35,7 +35,7 @@ async function run(){
             service: serviceName
         });
     }  catch(error){
-        // core.setFailed(error);
+        core.setFailed(error);
         core.info(error);
     }
 }
