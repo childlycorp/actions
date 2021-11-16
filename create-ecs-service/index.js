@@ -41,6 +41,12 @@ async function run(){
     const serviceName = core.getInput("ecs-service-name");
     const taskDefinition = core.getInput("ecs-task-definition-name");
     
+    const {serviceArns} = await ecs.listServices({
+        cluster: cluster,
+    }).promise();
+
+    core.info(`Setting output: serviceArns: ${(serviceArns) || ''}`);
+
     try{
       await createService(ecs,{
         cluster,
