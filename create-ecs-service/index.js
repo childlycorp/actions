@@ -69,8 +69,16 @@ async function run(){
             serviceNames.sort();
             // get last service
             const service = serviceNames[serviceNames.length - 1];
+                
+            await ecs.updateService({
+                service,
+                cluster,
+                "desiredCount": 0,
+            }).promise();
+            core.info(`Service ${service} is scaled to 0 in cluster ${cluster}`);
+
             // delete serviceName
-            const response = await ecs.deleteService({service, cluster, force:true}).promise();
+            await ecs.deleteService({service, cluster, force:true}).promise();
             core.info(`Service ${service} is deleted in cluster ${cluster}`);
             // generate service name
             const arr4 = service.split("-");
