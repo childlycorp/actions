@@ -12,7 +12,7 @@ async function descaleService(ecs, {cluster, service}){
 }
 
 async function deleteService(ecs, {cluster, service}){
-    // const descaleResponse = await descaleService(ecs, {cluster, service});
+    const descaleResponse = await descaleService(ecs, {cluster, service});
     const force = true;
     const response = await ecs.deleteService({
         service,
