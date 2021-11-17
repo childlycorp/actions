@@ -1,5 +1,6 @@
 const aws = require('aws-sdk');
 const core = require('@actions/core');
+const CircularJSON = require('circular-json');
 
 async function descaleService(ecs, {cluster, service}){
     const response = await ecs.updateService({
@@ -38,7 +39,7 @@ async function run(){
         const serviceName = core.getInput("ecs-service-name");
 
         const response = await ecr.listImages({ repositoryName })
-        const res = JSON.stringify(response);
+        const res = CircularJSON.stringify(response);
         core.info(`Images ${res}`);
 
         await deleteService(ecs, {
