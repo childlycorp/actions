@@ -28,8 +28,18 @@ async function run(){
         const ecs = new aws.ECS({
             customUserAgent: 'amazon-ecs-deploy-task-definition-for-github-actions'
         });
+
+        const ecr = new aws.ECR({
+            customUserAgent: 'amazon-ecr-login-for-github-actions'
+        });
+
+        const repositoryName = core.getInput("ecs-repository-name");
         const cluster = core.getInput("ecs-cluster-name");
         const serviceName = core.getInput("ecs-service-name");
+
+        const response = await ecr.listImages({ repositoryName })
+        core.info(`Images ${response} ${response.imageIds}`);
+
         await deleteService(ecs, {
             cluster,
             service: serviceName

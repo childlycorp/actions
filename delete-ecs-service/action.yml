@@ -1,6 +1,9 @@
 name: 'Deletes an AWS service'
 description: 'It deletes an AWS service in a cluster'
 inputs:
+  ecr-repository-name : 
+    description: repository
+    required: true
   ecs-cluster-name : 
     description: cluster
     required: true
