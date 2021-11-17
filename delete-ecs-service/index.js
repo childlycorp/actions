@@ -38,7 +38,7 @@ async function run(){
         const serviceName = core.getInput("ecs-service-name");
 
         const response = await ecr.listImages({ repositoryName })
-        core.info(`Images ${response} ${response.imageIds}`);
+        core.info(`Images ${JSON.stringify(response)}`);
 
         await deleteService(ecs, {
             cluster,
