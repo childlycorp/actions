@@ -1,6 +1,5 @@
 const aws = require('aws-sdk');
 const core = require('@actions/core');
-const CircularJSON = require('circular-json');
 
 async function descaleService(ecs, {cluster, service}){
     const response = await ecs.updateService({
