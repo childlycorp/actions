@@ -91,6 +91,7 @@ async function run() {
     core.setOutput('task-definition', updatedTaskDefFile.name);
     core.setOutput('front-port',containerDef.portMappings[0].hostPort);
     core.setOutput('linuxParameters',containerDef.linuxParameters);
+    core.setOutput('newTaskDefContents',newTaskDefContents);
   }
   catch (error) {
     core.setFailed(error.message);
